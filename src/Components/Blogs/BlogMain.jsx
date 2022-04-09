@@ -3,6 +3,7 @@ import LeftCol from "./leftCol";
 import RightCol from "./RightCol";
 
 const Blogs = () => {
+  document.title = "Aimelive - Blogs";
   return (
     <div>
       <BlogHeader />

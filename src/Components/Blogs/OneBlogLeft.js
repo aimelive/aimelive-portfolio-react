@@ -14,12 +14,13 @@ const OneBlogLeft = () => {
   useEffect(() => {
     fetch("https://my-brand-aimelive.herokuapp.com/api/v1/blogs/" + id)
       .then((res) => {
-        if (!res.ok) {
-          throw Error("Could not fetch the data!!");
+        if (res.status === 404) {
+          throw Error("Blog not found!!");
         }
         return res.json();
       })
       .then((data) => {
+        document.title = data.Content.blog.title;
         const arr = data.Content;
         setBlog(arr);
         setIsLoading(false);
@@ -35,7 +36,7 @@ const OneBlogLeft = () => {
       <div className="leftcolumn">
         <div>
           {" "}
-          {error && <ShowError />} {isLoading && <PreLoader />}{" "}
+          {error && <ShowError error={error} />} {isLoading && <PreLoader />}{" "}
           {blog && <BringBlog blog={blog} />}{" "}
         </div>{" "}
       </div>{" "}

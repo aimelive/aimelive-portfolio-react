@@ -6,49 +6,56 @@ import avatar2 from "../../images/avatar.png";
 import FetchComment from "./FetchComment";
 
 const BringBlog = ({ blog }) => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [comment, setComment] = useState('')
-  const [error, setError] = useState('')
-  const [sending, setSending] = useState('Comment')
-  const [sent, setSent] = useState(false)
-  const [nbrOfComments, setNbrOfComments] = useState(blog.blog.comments.length)
-  const { id } = useParams()
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comment, setComment] = useState("");
+  const [error, setError] = useState("");
+  const [sending, setSending] = useState("Comment");
+  const [sent, setSent] = useState(false);
+  const [nbrOfComments, setNbrOfComments] = useState(blog.blog.comments.length);
+  const { id } = useParams();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    setError('')
-    setSent(false)
+    e.preventDefault();
+    setError("");
+    setSent(false);
     if (validate()) {
-      setSending("Sending...")
-      fetch('https://my-brand-aimelive.herokuapp.com/api/v1/blogs/' + id + '/comment', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          postID: id,
-          name: name,
-          email: email,
-          comment: comment
-        })
-      })
+      setSending("Sending...");
+      fetch(
+        "https://my-brand-aimelive.herokuapp.com/api/v1/blogs/" +
+          id +
+          "/comment",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            postID: id,
+            name: name,
+            email: email,
+            comment: comment,
+          }),
+        }
+      )
         .then((response) => {
           if (response.status === 201) {
-            setSent(true)
-            setSending("Comment")
-            setName('')
-            setEmail('')
-            setComment('')
-            setNbrOfComments(nbrOfComments + 1)
-            return response.json()
+            setSent(true);
+            setSending("Comment");
+            setName("");
+            setEmail("");
+            setComment("");
+            setNbrOfComments(nbrOfComments + 1);
+            return response.json();
           } else {
-            throw Error()
+            throw Error();
           }
         })
         .then((data) => {
-          document.getElementById('comment-section').insertAdjacentHTML('beforeend', `<div class="comment-container" id="${data.Data._id}">
+          document.getElementById("comment-section").insertAdjacentHTML(
+            "beforeend",
+            `<div class="comment-container" id="${data.Data._id}">
             <div class="profileAvatar">
               <img src="${avatar2}" class="avatar-image" />
             </div>
@@ -56,7 +63,8 @@ const BringBlog = ({ blog }) => {
               <p class="posted-name">${name} <span style="color: #0077FF;">・</span> <span class="date">Just now</span></p>
               <p class="posted-text">${comment}</p>
             </div>
-          </div>`);
+          </div>`
+          );
           let thisComment = document.getElementById(data.Data._id);
           thisComment.style.opacity = "0";
           thisComment.style.animation = "comment-change 0.3s";
@@ -68,37 +76,40 @@ const BringBlog = ({ blog }) => {
           }, 400);
         })
         .catch((e) => {
-          setSending("Try again")
-          setError("Failed to Add Comment! Check your network connection")
-        })
+          setSending("Try again");
+          setError("Failed to Add Comment! Check your network connection");
+        });
     }
-  }
+  };
 
   function validate() {
     if (name === "") {
-      setError("Name Required!")
-      return false
+      setError("Name Required!");
+      return false;
     }
     if (name.length < 5) {
-      setError("Name: Enter at least 5 characters!")
+      setError("Name: Enter at least 5 characters!");
       return false;
     }
     if (email === "") {
-      setError("Email is required!")
+      setError("Email is required!");
       return false;
     }
 
-    if (email.indexOf("@") < 1 || (email.lastIndexOf(".") - email.indexOf("@") < 2)) {
-      setError("Invalid Email Format!")
+    if (
+      email.indexOf("@") < 1 ||
+      email.lastIndexOf(".") - email.indexOf("@") < 2
+    ) {
+      setError("Invalid Email Format!");
       return false;
-
     }
     if (comment === "") {
-      setError("Comment is required!")
+      setError("Comment is required!");
       return false;
     }
     return true;
   }
+
   return (
     <div className="card">
       <div className="cardimg story">
@@ -115,25 +126,47 @@ const BringBlog = ({ blog }) => {
         <p id="blogPreview"> {blog.blog.preview} </p>
         <p id="blogBody"> {blog.blog.body} </p>
         <h5 className="h5">
-
-          <span id="date" className="dateSpan"> Posted on
+          <span id="date" className="dateSpan">
+            Posted on
             {" " + new Date().toDateString(blog.blog.dateCreated)}
           </span>
-          <span className="commentsCountSpan"> <i className="fa fa-comment-o"> </i> {((nbrOfComments) > 0 ? ((nbrOfComments === 1) ? " 1 Comment " : nbrOfComments + " Comments") : "No comment yet")}</span>
+          <span className="commentsCountSpan">
+            <i className="fa fa-comment-o"> </i>
+            {nbrOfComments > 0
+              ? nbrOfComments === 1
+                ? " 1 Comment "
+                : nbrOfComments + " Comments"
+              : "No comment yet"}
+          </span>
           <span> Engagements: ( Unknown ) </span>
         </h5>
       </div>
       <h3> Leave a comment </h3>
       <div className="cardimg" id="commentSection">
         <div className="comment-section" id="comment-section">
-          {error && <div className="divErrorComment"><i className="fa fa-warning"></i> {error}</div>}
-          {sent && <div className="divSentComment"><i className="fa fa-check-circle"></i> Your Comment Added Successfully! </div>}
+          {error && (
+            <div className="divErrorComment">
+              <i className="fa fa-warning"></i> {error}
+            </div>
+          )}
+          {sent && (
+            <div className="divSentComment">
+              <i className="fa fa-check-circle"></i> Your Comment Added
+              Successfully!
+            </div>
+          )}
           <div className="comment-container">
             <div className="profileAvatar">
               <img src={avatar} height="50px" width="50px" alt="avatar" />
             </div>
             <div className="comment-data">
-              <form method="post" id="com-form" name="commentForm" className="commentForm" onSubmit={handleSubmit}>
+              <form
+                method="post"
+                id="com-form"
+                name="commentForm"
+                className="commentForm"
+                onSubmit={handleSubmit}
+              >
                 <label>
                   <input
                     type="text"
@@ -142,7 +175,6 @@ const BringBlog = ({ blog }) => {
                     placeholder="Your name..."
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-
                   />
                 </label>
                 <label>
@@ -153,7 +185,6 @@ const BringBlog = ({ blog }) => {
                     placeholder="Your email..."
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-
                   />
                 </label>
                 <label>
@@ -166,7 +197,6 @@ const BringBlog = ({ blog }) => {
                     placeholder="Your comment..."
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-
                   ></textarea>
                 </label>
                 <div id="comment-footer">

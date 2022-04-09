@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
-import PreLoader from "./PreLoader";
 import ShowError from "./PreError";
+import SkeletonBlogs from "../../Skeletons/SkeletonBlogs";
 
 const LeftCol = () => {
   const [blogs, setBlogs] = useState(null);
@@ -32,7 +32,7 @@ const LeftCol = () => {
         <div>
           <div className="card">
             {error && <ShowError />}
-            {isLoading && <PreLoader />}
+            {isLoading && [1, 2, 3, 4, 5].map((n) => <SkeletonBlogs key={n} />)}
             {blogs && <BlogList blogs={blogs} />}
           </div>
         </div>

@@ -1,0 +1,106 @@
+/* basic styles */
+
+.skeleton {
+    background: #ddd;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.skeleton.category {
+    width: 200px;
+    height: 22px;
+    margin-bottom: 25px;
+}
+
+.skeleton.title {
+    width: 100%;
+    height: 18px;
+}
+
+.skeleton.feature {
+    width: 210px;
+    height: 180px;
+}
+
+.skeleton.date {
+    width: 100px;
+    height: 14px;
+}
+
+.skeleton.comment-icon {
+    width: 20px;
+    height: 14px;
+}
+
+.skeleton.short-title {
+    width: 40%;
+    height: 18px;
+}
+
+
+/* skeleton blogs */
+
+.skeleton-blog {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    margin: 8px;
+}
+
+.lower {
+    display: grid;
+    grid-template-columns: 1fr 25fr;
+    gap: 10px;
+}
+
+
+/* animation effect */
+
+.skeleton-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    animation: loading 3s infinite;
+}
+
+.shimmer {
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.05);
+}
+
+@keyframes loading {
+    0% {
+        transform: translateX(-150%);
+    }
+    50% {
+        transform: translateX(-60%);
+    }
+    100% {
+        transform: translateX(150%);
+    }
+}
+
+@media (max-width: 800px) {
+    .skeleton-blog {
+        grid-template-columns: 1fr;
+    }
+    .skeleton.feature {
+        width: 100%;
+        height: 280px;
+    }
+}
+
+@media (min-width: 800px) {
+    .skeleton-blog {
+        gap: 10px;
+    }
+}
