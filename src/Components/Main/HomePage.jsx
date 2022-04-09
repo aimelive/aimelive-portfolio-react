@@ -26,7 +26,7 @@ const HomePage = () => {
             <Link to="/" className="pro">
               Projects
             </Link>
-            <Link to="/blogs" className="link">
+            <Link to="/about" className="link">
               Skills
             </Link>
           </div>
@@ -35,24 +35,27 @@ const HomePage = () => {
           <img src={profile} width={200} alt="Profile_photo" />
           <div className="line"> </div>
           <div className="socialLinks">
-            <Link to="/">
+            <a href="https://www.facebook.com/aimelive" target="_blank">
               <i className="fa fa-facebook"> </i>
-            </Link>
-            <Link to="/">
+            </a>
+            <a href="#">
               <i className="fa fa-whatsapp"> </i>
-            </Link>
-            <Link to="/">
+            </a>
+            <a
+              href="https://www.linkedin.com/in/aime-ndayambaje/"
+              target="_blank"
+            >
               <i className="fa fa-linkedin"> </i>
-            </Link>
-            <Link to="/">
+            </a>
+            <a href="https://www.twitter.com/aimelive_1" target="_blank">
               <i className="fa fa-twitter"> </i>
-            </Link>
-            <Link to="/">
+            </a>
+            <a href="#">
               <i className="fa fa-slack"> </i>
-            </Link>
-            <Link to="/">
+            </a>
+            <a href="https://github.com/aimelive" target="_blank">
               <i className="fa fa-github"> </i>
-            </Link>
+            </a>
           </div>
           <img src={location} alt="Location Place" />
           <p>
