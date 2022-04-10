@@ -7,19 +7,21 @@ import SignUp from "./Components/Main/SignUp";
 import Blogs from "./Components/Blogs/BlogMain";
 import BlogDetail from "./Components/Blogs/OneBlog";
 import { Routes, Route } from "react-router-dom";
+import React from "react";
 import NotFound from "./Components/NotFound";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" exact={true} element={<HomePage />} />
-      <Route path="/contact" exact={true} element={<ContactPage />} />
-      <Route path="/about" exact={true} element={<About />} />
-      <Route path="/blogs" exact={true} element={<Blogs />} />
-      <Route path="/blogs/:id" exact={true} element={<BlogDetail />} />
-      <Route path="/login" exact={true} element={<Login />} />
-      <Route path="/signup" exact={true} element={<SignUp />} />
-      <Route path="*" exact={true} element={<NotFound />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/blogs" element={<Blogs />} />
+      <Route path="/blogs/:id" element={<BlogDetail />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignUp />} />
+      {/* <Route path="/test" element={<Navigate to="/" />} /> */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
