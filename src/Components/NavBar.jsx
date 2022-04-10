@@ -46,10 +46,11 @@ const NavBar = () => {
 
   // about setting title of the current page
 
-  const domain = "http://localhost:3000/";
+  // const domain = window.location.pathname;
+
   const routesArray = ["", "About", "Contact", "Login", "Signup", "Blogs"];
   for (let i = 0; i < routesArray.length; i++) {
-    if (domain + routesArray[i].toLowerCase() === window.location.href) {
+    if ("/" + routesArray[i].toLowerCase() === window.location.pathname) {
       let page = routesArray[i] === "" ? "Home" : routesArray[i];
       if (!user) {
         document.title = page + " - Aimelive";
