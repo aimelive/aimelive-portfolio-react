@@ -1,4 +1,4 @@
-//import { useParams } from "react-router-dom";
+import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import avatar from "../../images/Rectangle 21.png";
@@ -109,7 +109,6 @@ const BringBlog = ({ blog }) => {
     }
     return true;
   }
-
   return (
     <div className="card">
       <div className="cardimg story">
@@ -124,7 +123,7 @@ const BringBlog = ({ blog }) => {
         </p>
         <h5 id="category"> {blog.blog.category} </h5>
         <p id="blogPreview"> {blog.blog.preview} </p>
-        <p id="blogBody"> {blog.blog.body} </p>
+        <p id="blogBody" dangerouslySetInnerHTML={{ __html: blog.blog.body }} />
         <h5 className="h5">
           <span id="date" className="dateSpan">
             Posted on
@@ -138,7 +137,6 @@ const BringBlog = ({ blog }) => {
                 : nbrOfComments + " Comments"
               : "No comment yet"}
           </span>
-          <span> Engagements: ( Unknown ) </span>
         </h5>
       </div>
       <h3> Leave a comment </h3>

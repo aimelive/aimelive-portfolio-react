@@ -70,59 +70,57 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="login">
-        <img src={logo} id="logo" width="80px" alt="my-logo" />
-        <h2 id="animateHeading"> Hey Everyone, Welcome </h2>
-        {fails && (
-          <div className="divError">
-            Oops! <span> {fails} </span>
-          </div>
-        )}
-        {success && (
-          <div className="divSuccess">
-            {success}
-            Redirecting...
-          </div>
-        )}
-        <form className="login_form" name="loginAdmin" onSubmit={handleSubmit}>
-          <label id="errorEmail"> E - mail </label> <br />
+    <div className="login">
+      <img src={logo} id="logo" width="80px" alt="my-logo" />
+      <h2 id="animateHeading"> Hey Everyone, Welcome </h2>
+      {fails && (
+        <div className="divError">
+          Oops! <span> {fails} </span>
+        </div>
+      )}
+      {success && (
+        <div className="divSuccess">
+          {success}
+          Redirecting...
+        </div>
+      )}
+      <form className="login_form" name="loginAdmin" onSubmit={handleSubmit}>
+        <label id="errorEmail"> E - mail </label> <br />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email or Phone number"
+          className="input"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          minLength="5"
+        />
+        <br />
+        <label id="errorPassword"> Password </label> <br />
+        <div className="pass-word">
           <input
-            type="email"
-            name="email"
-            placeholder="Email or Phone number"
-            className="input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            minLength="5"
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            className="input password"
+            value={pwd}
+            onChange={(e) => setPwd(e.target.value)}
+            minLength="8"
+            required
           />
-          <br />
-          <label id="errorPassword"> Password </label> <br />
-          <div className="pass-word">
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              className="input password"
-              value={pwd}
-              onChange={(e) => setPwd(e.target.value)}
-              minLength="8"
-              required
-            />
-            <i className="fa fa-eye showPwd" onClick={handleEye}></i>
-          </div>
-          <input
-            type="submit"
-            value={wait}
-            placeholder="Email or Phone number"
-            className="input submit"
-          />
-          <br />
-        </form>
-        <p>
-          Don 't have an Account? <Link to="/signup">Sign Up Now</Link>
-        </p>
-      </div>
+          <i className="fa fa-eye showPwd" onClick={handleEye}></i>
+        </div>
+        <input
+          type="submit"
+          value={wait}
+          placeholder="Email or Phone number"
+          className="input submit"
+        />
+        <br />
+      </form>
+      <p>
+        Don 't have an Account? <Link to="/signup">Sign Up Now</Link>
+      </p>
     </div>
   );
 };

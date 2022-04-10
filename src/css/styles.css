@@ -230,18 +230,18 @@ body {
 .homeContent {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     padding: 20px;
-}
-
-.homeContent .overview {
-    margin-left: 80px;
-    user-select: none;
 }
 
 .homeContent .profile,
 .homeContent .overview {
     padding: 12px;
     width: 50%;
+}
+
+.homeContent .overview {
+    padding-left: 60px;
 }
 
 .homeContent .overview h5 {
@@ -282,14 +282,6 @@ body {
     font-weight: lighter;
     font-style: oblique;
 }
-
-
-/* .homeContent .overview .wlcmText .blqText span {
-    background-color: #ecb22e;
-    color: white;
-    font-weight: 500;
-    border-radius: 3em;
-} */
 
 .homeContent .overview .wlcmText p {
     margin: 15px;
@@ -566,11 +558,8 @@ body {
 }
 
 #blogBody img {
+    border-radius: 1em;
     float: none;
-    width: 100%;
-    height: auto;
-    border-radius: 0.2em;
-    padding: 8px;
 }
 
 .follow .socialLinks {
@@ -1241,7 +1230,7 @@ body .login {
     padding: 60px 20px;
     background-color: rgba(211, 211, 211, 0.185);
     border-radius: 5px;
-    width: 45%;
+    width: 550px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.3);
     text-align: center;
@@ -1402,21 +1391,7 @@ body .login .login_form label {
 /* 
 media queries */
 
-@media (max-width: 667px) {
-    .homeContent {
-        display: inline-block;
-    }
-    .homeContent .profile,
-    .homeContent .overview {
-        margin: auto;
-        width: 100%;
-    }
-    body .contactPage .reachout input {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .headerNav .menu {
         display: none;
     }
@@ -1438,9 +1413,29 @@ media queries */
     }
 }
 
-@media (max-width: 954px) {
+@media screen and (max-width: 954px) {
     .footer .FooterCards h4 {
         padding-top: 20px;
+    }
+    body .login {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .homeContent .profile,
+    .homeContent .overview {
+        margin: auto;
+        width: 100%;
+    }
+    body .contactPage .reachout input {
+        width: 100%;
+    }
+    body .login {
+        width: 85%;
+    }
+    .homeContent .overview {
+        padding-left: 20px;
     }
 }
 
