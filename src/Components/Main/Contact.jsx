@@ -4,7 +4,6 @@ import profile from "../../images/259876262_273615128057795_12441334990616548_n.
 import logo from "../../images/Rectangle 21.png";
 
 const ContactPage = () => {
-  document.title = `Aimelive - Contact Page `;
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");

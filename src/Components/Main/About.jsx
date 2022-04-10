@@ -2,7 +2,6 @@ import profile from "../../images/259876262_273615128057795_12441334990616548_n.
 import { Link } from "react-router-dom";
 import locate from "../../images/location.png";
 const About = () => {
-  document.title = "Aimelive - About Page";
   return (
     <div>
       <div className="aboutRow">

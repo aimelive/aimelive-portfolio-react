@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import location from "../../images/location.png";
 import profile from "../../images/Rectangle 21.png";
 const HomePage = () => {
-  document.title = "Aimelive - Home Page";
   return (
     <main className="homeContent">
       <div className="overview">

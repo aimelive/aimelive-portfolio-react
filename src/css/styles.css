@@ -560,6 +560,7 @@ body {
 #blogBody img {
     border-radius: 1em;
     float: none;
+    padding: 10px;
 }
 
 .follow .socialLinks {

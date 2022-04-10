@@ -1,16 +1,12 @@
 import Logo from "../images/Rectangle 21.png";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
 import { UserContext } from "../Contexts/getUserInfo";
 import swal from "sweetalert";
 
 const NavBar = () => {
   const user = useContext(UserContext);
-
-  const goHome = () => {
-    window.location.href = "/";
-  };
-
+  const go = useNavigate();
   const handleClick = () => {
     const menu = document.querySelector(".mobileMenu");
     if (menu.style.display === "block") {
@@ -47,10 +43,27 @@ const NavBar = () => {
       }
     });
   };
+
+  // about setting title of the current page
+
+  // const domain = window.location.pathname;
+
+  const routesArray = ["", "About", "Contact", "Login", "Signup", "Blogs"];
+  for (let i = 0; i < routesArray.length; i++) {
+    if ("/" + routesArray[i].toLowerCase() === window.location.pathname) {
+      let page = routesArray[i] === "" ? "Home" : routesArray[i];
+      if (!user) {
+        document.title = page + " - Aimelive";
+      } else {
+        document.title = `${user.Data.name} - ${page} Aimelive`;
+      }
+    }
+  }
+
   return (
     <div>
       <nav className="headerNav">
-        <div className="Logo" onClick={goHome}>
+        <div className="Logo" onClick={() => go("/")}>
           <img src={Logo} alt="Aimelive Logo" />
           <span> Aimelive</span>
         </div>
@@ -136,7 +149,25 @@ const NavBar = () => {
 
           <NavLink to="/contact">Contact</NavLink>
 
-          <NavLink to="/login">Login</NavLink>
+          {user && (
+            <span>
+              <span>
+                {user.Data.role === "admin" ? (
+                  <Link to="/dashboard">Dashboard</Link>
+                ) : (
+                  ""
+                )}
+              </span>
+              <Link to="#">Notifications</Link>
+              <Link to="#">{user.Data.name}</Link>
+              <Link to="#" onClick={handleLogout}>
+                <i className="fa fa-power-off"> </i>&nbsp; Logout
+              </Link>
+            </span>
+          )}
+          {!localStorage.getItem("token") && (
+            <NavLink to="/login">Login</NavLink>
+          )}
         </nav>
       </div>
     </div>
