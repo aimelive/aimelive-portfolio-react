@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../images/Rectangle 21.png";
 const SignUp = () => {
-  document.title = "Aimelive - Sign Up Now";
   //declaring variables
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");

@@ -7,7 +7,6 @@ const Login = () => {
   const [wait, setWait] = useState("Sign in");
   const [fails, setFails] = useState(null);
   const [success, setSuccess] = useState(null);
-  document.title = "Aimelive - Login Page";
   const handleSubmit = (e) => {
     e.preventDefault();
     setWait("Loading...");
