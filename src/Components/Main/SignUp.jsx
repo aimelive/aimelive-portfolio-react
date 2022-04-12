@@ -19,7 +19,7 @@ const SignUp = () => {
     setCreated(null);
     if (signUpValidate()) {
       setError(null);
-      setIsCreating("Creating user...");
+      setIsCreating("Creating user, Please wait...");
       fetch("https://my-brand-aimelive.herokuapp.com/api/v1/users/signup", {
         method: "POST",
         headers: {
@@ -59,32 +59,54 @@ const SignUp = () => {
         });
     }
   };
-
+  const borderError = "border: 2px solid rgb(197, 20, 20)";
+  const setBorderError = (inputField) => {
+    inputField.setAttribute("style", borderError);
+  };
+  const inputs = document.querySelectorAll(".input");
+  inputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      input.removeAttribute("style");
+    });
+  });
   function signUpValidate() {
     const nameV2 = fullName.trim();
+
+    // referincing to an html inputs
+    const nameInput = document.querySelector("#fullName");
+    const emailInput = document.querySelector("#userEmail");
+    const phoneInput = document.querySelector("#userPhone");
+    const pwdInput = document.querySelector("#userPassword");
+    const confirmPwdInput = document.querySelector("#userConfirmPassword");
+
     if (nameV2 === "") {
-      document.querySelector("#fullName").focus();
+      nameInput.focus();
+      setBorderError(nameInput);
       setError("Name Required!!");
       return false;
     }
     if (nameV2.length < 5) {
-      document.querySelector("#fullName").focus();
+      nameInput.focus();
       setError("Name: Enter at least 5 characters!!");
+      setBorderError(nameInput);
       return false;
     }
     if (nameV2.split(" ").length < 2) {
-      document.querySelector("#fullName").focus();
+      nameInput.focus();
       setError("Name: Both names required!");
+      setBorderError(nameInput);
       return false;
     }
     const specialChars = /[0123456789`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     if (specialChars.test(nameV2)) {
-      document.querySelector("#fullName").focus();
+      nameInput.focus();
       setError("Name: Should not contain any number or special character!");
+      setBorderError(nameInput);
       return false;
     }
     if (email === "") {
-      document.querySelector("#userEmail").focus();
+      emailInput.focus();
+      setBorderError(emailInput);
       setError("Email is required!");
       return false;
     }
@@ -93,41 +115,48 @@ const SignUp = () => {
       email.indexOf("@") < 1 ||
       email.lastIndexOf(".") - email.indexOf("@") < 2
     ) {
-      document.querySelector("#userEmail").focus();
+      emailInput.focus();
+      setBorderError(emailInput);
       setError("Invalid Email Format!");
       return false;
     }
     const niceEmail = /[`!#$%^&*()+\-=\[\]{};':"\\|,<>\/?~]/;
     if (niceEmail.test(email)) {
-      document.querySelector("#userEmail").focus();
+      emailInput.focus();
+      setBorderError(emailInput);
       setError(
         "Invalid Email: should not contain any special character except @ _ ."
       );
       return false;
     }
     if (phone === "") {
-      document.querySelector("#userPhone").focus();
+      phoneInput.focus();
+      setBorderError(phoneInput);
       setError("Phone Number required please!");
       return false;
     }
     if (password === "") {
-      document.querySelector("#userPassword").focus();
+      pwdInput.focus();
+      setBorderError(pwdInput);
       setError("Password required!");
       return false;
     }
 
     if (password.length < 8 || password.length > 12) {
-      document.querySelector("#userPassword").focus();
+      pwdInput.focus();
+      setBorderError(pwdInput);
       setError("Password should have at least 8 and not beyond 12 characters");
       return false;
     }
     if (confirmPassword === "") {
-      document.querySelector("#userConfirmPassword").focus();
+      confirmPwdInput.focus();
+      setBorderError(confirmPwdInput);
       setError("Please confirm password!");
       return false;
     }
     if (password !== confirmPassword) {
-      document.querySelector("#userConfirmPassword").focus();
+      confirmPwdInput.focus();
+      setBorderError(confirmPwdInput);
       setError("Password does not match!");
       return false;
     }
@@ -150,22 +179,27 @@ const SignUp = () => {
     <div>
       <div className="login">
         <img src={logo} id="logo" width="80px" alt="my-logo" />
-        <h2 id="animateHeading"> Hey Everyone, Welcome </h2>{" "}
+        <h2 id="animateHeading"> Hey Everyone, Welcome </h2>
         {error && (
           <div className="divErrorSignUp">
             <div>
-              <i className="fa fa-warning"> </i> {error}{" "}
-            </div>{" "}
+              <i className="fa fa-warning"> </i> {error}
+            </div>
           </div>
-        )}{" "}
+        )}
         {created && (
           <div className="userCreated">
-            {" "}
             {created}
-            Redirecting...{" "}
+            Redirecting...
           </div>
-        )}{" "}
-        <form className="login_form" name="loginAdmin" onSubmit={handleSubmit}>
+        )}
+        <form
+          className="login_form"
+          name="loginAdmin"
+          onSubmit={handleSubmit}
+          autoComplete="off"
+          noValidate
+        >
           <label> Full Name </label> <br />
           <input
             type="text"
@@ -175,7 +209,7 @@ const SignUp = () => {
             id="fullName"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
-          />{" "}
+          />
           <br />
           <label> E - mail </label> <br />
           <input
@@ -186,7 +220,7 @@ const SignUp = () => {
             id="userEmail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />{" "}
+          />
           <br />
           <label> Phone Number </label> <br />
           <input
@@ -207,7 +241,7 @@ const SignUp = () => {
             }}
             minLength={10}
             maxLength={12}
-          />{" "}
+          />
           <br />
           <label id="errorPassword"> Password </label> <br />
           <div className="pass-word">
@@ -220,12 +254,10 @@ const SignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               maxLength={12}
-            />{" "}
-            <i className="fa fa-eye showPwd" onClick={handleEye}>
-              {" "}
-            </i>{" "}
-          </div>{" "}
-          <label id="errorPassword"> Password </label> <br />
+            />
+            <i className="fa fa-eye showPwd" onClick={handleEye}></i>
+          </div>
+          <label id="errorPassword"> Confirm Password </label> <br />
           <input
             type="password"
             name="confirmPassword"
@@ -235,7 +267,7 @@ const SignUp = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             maxLength={password.length}
-          />{" "}
+          />
           <br />
           <input
             type="submit"
@@ -244,11 +276,11 @@ const SignUp = () => {
             className="input submit"
           />
           <br />
-        </form>{" "}
+        </form>
         <p>
-          Already have an Account ? <Link to="/login"> Go to Login </Link>{" "}
-        </p>{" "}
-      </div>{" "}
+          Already have an Account ? <Link to="/login"> Go to Login </Link>
+        </p>
+      </div>
     </div>
   );
 };
