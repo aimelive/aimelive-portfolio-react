@@ -15,6 +15,7 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     setSending("Send Message");
     setSent(false);
     if (validate()) {

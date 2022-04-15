@@ -46,19 +46,17 @@ const NavBar = () => {
 
   // about setting title of the current page
 
-  // const domain = window.location.pathname;
-
   const routesArray = ["", "About", "Contact", "Login", "Signup", "Blogs"];
-  for (let i = 0; i < routesArray.length; i++) {
-    if ("/" + routesArray[i].toLowerCase() === window.location.pathname) {
-      let page = routesArray[i] === "" ? "Home" : routesArray[i];
+  routesArray.forEach((page) => {
+    if ("/" + page.toLowerCase() === window.location.pathname) {
+      page = page === "" ? "Home" : page;
       if (!user) {
         document.title = page + " - Aimelive";
       } else {
         document.title = `${user.Data.name} - ${page} Aimelive`;
       }
     }
-  }
+  });
 
   return (
     <div>
