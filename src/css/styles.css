@@ -6,11 +6,35 @@
     transition: 0.3s;
 }
 
+:root {
+    --theme-color-primary: #ecb22e;
+    --theme-color-lightgrey: lightgrey;
+    --theme-color-grey: #aaa;
+}
+
 body {
     background-image: url("../images/backgroung.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--theme-color-grey);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--theme-color-primary);
 }
 
 .headerNav {
@@ -46,7 +70,7 @@ body {
     font-weight: bold;
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     font-size: xx-large;
-    text-shadow: 0.2px 0.3px 15px #ecb22e;
+    text-shadow: 0.2px 0.3px 15px var(--theme-color-primary);
 }
 
 .headerNav .menu ul li {
@@ -60,7 +84,7 @@ body {
 }
 
 .headerNav .menu ul li .active {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     font-weight: bolder;
 }
 
@@ -79,7 +103,7 @@ body {
 }
 
 .headerNav .menu ul li .login:hover {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
 }
 
@@ -106,7 +130,7 @@ body {
 }
 
 .headerNav .menu .avatar {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     margin: auto 30px;
     cursor: pointer;
     font-weight: 900;
@@ -119,7 +143,7 @@ body {
 
 .headerNav .menu .dropdown a:hover {
     padding: 12px;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
     border-radius: 0px;
     padding-left: 25px;
@@ -141,7 +165,7 @@ body {
 
 .headerNav .humberg:hover,
 .headerNav .humberg:focus {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 .mobileMenu {
@@ -165,7 +189,7 @@ body {
 }
 
 .mobileMenu a:hover {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
 }
 
@@ -193,7 +217,7 @@ body {
 
 .footer .FooterCards h4 {
     padding-bottom: 12px;
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 .footer .FooterCards ul li {
@@ -245,7 +269,7 @@ body {
 }
 
 .homeContent .overview h5 {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     user-select: none;
     font-size: 1.2em;
     margin: 8px 0px;
@@ -272,7 +296,7 @@ body {
 }
 
 .homeContent .overview .wlcmText span {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
 }
 
@@ -298,7 +322,7 @@ body {
 
 .homeContent .overview .homeBtns a {
     padding: 12px;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
     border-radius: 3em;
     text-decoration: none;
@@ -306,7 +330,7 @@ body {
     text-align: center;
     margin: 5px 12px;
     display: inline-block;
-    border: 2px solid #ecb22e;
+    border: 2px solid var(--theme-color-primary);
 }
 
 .homeContent .overview .homeBtns .link {
@@ -316,8 +340,8 @@ body {
 }
 
 .homeContent .overview .homeBtns .link:hover {
-    border: 2px solid #ecb22e;
-    background-color: #ecb22e;
+    border: 2px solid var(--theme-color-primary);
+    background-color: var(--theme-color-primary);
     color: white;
 }
 
@@ -336,7 +360,7 @@ body {
 }
 
 .homeContent .profile .socialLinks a {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     padding: 0 0.5em;
     font-size: 22px;
 }
@@ -348,7 +372,7 @@ body {
 .homeContent .profile .line {
     width: 50%;
     height: 2px;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     margin: 20px auto;
 }
 
@@ -386,11 +410,11 @@ body {
 }
 
 .subHeader p a:hover {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 .header span {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     font-weight: 300;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -412,7 +436,7 @@ body {
 
 .header .searchBlog:focus {
     border: 0.3px solid lightgrey;
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 
@@ -452,7 +476,7 @@ body {
 }
 
 .cardimg .readmore {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     transition: 0.3s;
 }
 
@@ -494,12 +518,12 @@ body {
 }
 
 .rightcolumn .card .insideCard p:hover {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 .rightcolumn .card .readMore2 {
     color: white;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     padding: 6px 22px;
     border-radius: 3em;
     box-shadow: 1px 1px 5px lightgray;
@@ -521,7 +545,7 @@ body {
 }
 
 .rightcolumn .card a:hover {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
 }
 
 .row:after {
@@ -570,7 +594,7 @@ body {
 }
 
 .follow .socialLinks a {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     font-size: 20px;
 }
 
@@ -643,7 +667,7 @@ body {
 
 .newsletter input:focus {
     box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.4);
-    border: 1px solid #ecb22e;
+    border: 1px solid var(--theme-color-primary);
 }
 
 .newsletter .icon {
@@ -659,7 +683,7 @@ body {
     padding: 8px;
     border-radius: 5px;
     border: none;
-    background: #ecb22e;
+    background: var(--theme-color-primary);
     font-size: 14px;
     font-weight: 600;
     color: #fff;
@@ -863,9 +887,9 @@ button {
 }
 
 .errorShow .errorCard .a button:hover {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
-    border: 2px solid #ecb22e;
+    border: 2px solid var(--theme-color-primary);
 }
 
 .errorShow .errorCard .a {
@@ -892,7 +916,7 @@ button {
 
 .not-found a {
     text-decoration: none;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     color: white;
     padding: 12px 20px;
     border-radius: 3em;
@@ -980,7 +1004,7 @@ body .contactPage .reachout .errorMessage {
 }
 
 body .contactPage .reachout h2 span {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 body .contactPage .reachout h2 {
@@ -1013,12 +1037,12 @@ body .contactPage .reachout input {
 
 body .contactPage .reachout input:focus,
 body .contactPage .reachout textarea:focus {
-    border: 1px #ecb22e solid;
+    border: 1px var(--theme-color-primary) solid;
 }
 
 body .contactPage .reachout input[type="submit"] {
     color: white;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     border: none;
     margin: 8px;
 }
@@ -1103,7 +1127,7 @@ body .aboutRow .profileCard img {
 body .aboutRow .middle a {
     font-size: 18px;
     margin: 5px;
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     text-decoration: none;
 }
 
@@ -1117,15 +1141,15 @@ body .aboutRow .middle .bio {
 
 body .aboutRow .rightCol .rightCard {
     background-color: white;
-    border: 1px solid #ecb22e;
+    border: 1px solid var(--theme-color-primary);
     margin: 20px 5px;
     margin-bottom: 0px;
 }
 
 body .aboutRow .rightCol .rightCard p {
     text-align: center;
-    color: #ecb22e;
-    border: 1px solid #ecb22e;
+    color: var(--theme-color-primary);
+    border: 1px solid var(--theme-color-primary);
     border-left: none;
     border-right: none;
     padding: 12px;
@@ -1159,7 +1183,7 @@ body .aboutRow .rightCol .rightCard ol li span:hover {
 }
 
 body .aboutRow .rightCol .rightCard ol li:hover {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 body .aboutRow .rightCol .rightCard ol li a:hover {
@@ -1175,7 +1199,7 @@ body .aboutRow .middle .address p {
 }
 
 body .aboutRow .middle .line {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     width: 80%;
     height: 2px;
     margin: 12px auto;
@@ -1193,7 +1217,7 @@ body .aboutRow .middle .hire .goto {
     box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.3);
     border: none;
     color: white;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     cursor: pointer;
     margin-right: 18px;
 }
@@ -1282,11 +1306,11 @@ body .login .input {
 }
 
 body .login .input:hover {
-    border: 1px solid #ecb22e;
+    border: 1px solid var(--theme-color-primary);
 }
 
 body .login .input:focus {
-    border: 1px solid #ecb22e;
+    border: 1px solid var(--theme-color-primary);
 }
 
 body .login p a {
@@ -1295,7 +1319,7 @@ body .login p a {
 }
 
 body .login p a:hover {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
 }
 
 body .login .pass-word {
@@ -1327,7 +1351,7 @@ body .login .login_form .submit {
 }
 
 body .login .login_form .submit:hover {
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     cursor: pointer;
 }
 
@@ -1342,7 +1366,7 @@ body .login .login_form label {
 
 #animateHeading {
     font-weight: 900;
-    background: linear-gradient(90deg, gray, #fff, #ecb22e);
+    background: linear-gradient(90deg, gray, #fff, var(--theme-color-primary));
     letter-spacing: 3px;
     -webkit-background-clip: text;
     background-clip: text;
@@ -1472,7 +1496,7 @@ media queries */
 }
 
 .isLoading .c {
-    color: #ecb22e;
+    color: var(--theme-color-primary);
     margin: 15px auto;
     text-align: center;
 }
@@ -1497,7 +1521,7 @@ media queries */
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    background-color: #ecb22e;
+    background-color: var(--theme-color-primary);
     border-radius: 100%;
     -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;
